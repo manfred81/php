@@ -22,18 +22,32 @@
 
 // echo "Примерное время выполнения плана = $sum ч";
 
-$quaere = readline("В каком году произошло крещение Руси?». Варианты: 810, 988 или 740 год\n");
-$variant1 = '810';
-$variant2 = '988';
-$variant3 = '740';
 
-while ($quaere !== $variant2) {
+do {
     $quaere = readline("В каком году произошло крещение Руси?». Варианты: 810, 988 или 740 год\n");
-    if ($quaere == $variant1) {
-        echo "не верно\n";
+    switch ($quaere) {
+        case '988':
+            echo "Верно";
+            break (2);
+        case '810':
+        case '740':
+            echo "не верно";
+            break (2);
     }
-    if ($quaere == $variant3) {
-        echo "не верно\n";
-    }
+} while (true);
+
+do {
+    $task1 = readline("количество задач, запланированных вами сегодня?\n");
+} while ($task1 <= 0);
+
+$out = "сегодня у вас запланировано $task1 задач ";
+$sum = 0;
+
+for ($i = 0; $i <= $task1; $i++) {
+    $task2 = readline("Еще что планируете?\n");
+    $time2 = readline("Сколько примерно времени эта задача займет?\n");
+    $out .= "- $task2 ({$time2}ч).\n";
+    $sum += $time2;
 }
-echo "Верно";
+echo $out;
+echo "Всего займет $sum ч.";
