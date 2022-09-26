@@ -23,31 +23,59 @@
 // echo "Примерное время выполнения плана = $sum ч";
 
 
-do {
-    $quaere = readline("В каком году произошло крещение Руси?». Варианты: 810, 988 или 740 год\n");
-    switch ($quaere) {
-        case '988':
-            echo "Верно";
-            break (2);
-        case '810':
-        case '740':
-            echo "не верно";
-            break (2);
-    }
-} while (true);
+// do {
+//     $quaere = readline("В каком году произошло крещение Руси?». Варианты: 810, 988 или 740 год\n");
+//     switch ($quaere) {
+//         case '988':
+//             echo "Верно";
+//             break (2);
+//         case '810':
+//         case '740':
+//             echo "не верно";
+//             break (2);
+//     }
+// } while (true);
 
-do {
-    $task1 = readline("количество задач, запланированных вами сегодня?\n");
-} while ($task1 <= 0);
+// do {
+//     $task1 = readline("количество задач, запланированных вами сегодня?\n");
+// } while ($task1 <= 0);
 
-$out = "сегодня у вас запланировано $task1 задач ";
-$sum = 0;
+// $out = "сегодня у вас запланировано $task1 задач ";
+// $sum = 0;
 
-for ($i = 0; $i <= $task1; $i++) {
-    $task2 = readline("Еще что планируете?\n");
-    $time2 = readline("Сколько примерно времени эта задача займет?\n");
-    $out .= "- $task2 ({$time2}ч).\n";
-    $sum += $time2;
+// for ($i = 0; $i <= $task1; $i++) {
+//     $task2 = readline("Еще что планируете?\n");
+//     $time2 = readline("Сколько примерно времени эта задача займет?\n");
+//     $out .= "- $task2 ({$time2}ч).\n";
+//     $sum += $time2;
+// }
+// echo $out;
+// echo "Всего займет $sum ч.";
+
+$arr1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+$arr2 = range(1, 10);
+$result = [];
+
+for ($i = 0; $i < count($arr1); $i++) {
+    $result[] = $arr1[$i] * $arr2[$i];
 }
-echo $out;
-echo "Всего займет $sum ч.";
+print_r($result);
+
+
+
+
+$wishes = ['счастья', 'здоровья', 'удачи', 'счастья', 'радости'];
+$epithets = ['огромного', 'отличного', 'безграничного', 'крепчайщего', 'небывалого'];
+
+$name = readline('Имя именинника?');
+$wishesLimit = 3;
+$wishesChosen = [];
+for ($i = 1; $i <= $wishesLimit; $i++) {
+    $wishesChosen[] = $epithets[array_rand($epithets)] . " " . $wishes[array_rand($wishes)];
+}
+
+$lastWish = array_pop($wishesChosen);
+
+$congratulations = " <<Дорогой $name, поздравляю, и желаю тебе " . implode(', ', $wishesChosen) . " и " . $lastWish . ">>.";
+
+echo $congratulations;
