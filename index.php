@@ -52,30 +52,51 @@
 // echo $out;
 // echo "Всего займет $sum ч.";
 
-$arr1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-$arr2 = range(1, 10);
-$result = [];
+// $arr1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+// $arr2 = range(1, 10);
+// $result = [];
 
-for ($i = 0; $i < count($arr1); $i++) {
-    $result[] = $arr1[$i] * $arr2[$i];
-}
-print_r($result);
-
-
+// for ($i = 0; $i < count($arr1); $i++) {
+//     $result[] = $arr1[$i] * $arr2[$i];
+// }
+// print_r($result);
 
 
-$wishes = ['счастья', 'здоровья', 'удачи', 'счастья', 'радости'];
-$epithets = ['огромного', 'отличного', 'безграничного', 'крепчайщего', 'небывалого'];
 
-$name = readline('Имя именинника?');
-$wishesLimit = 3;
-$wishesChosen = [];
-for ($i = 1; $i <= $wishesLimit; $i++) {
-    $wishesChosen[] = $epithets[array_rand($epithets)] . " " . $wishes[array_rand($wishes)];
-}
 
-$lastWish = array_pop($wishesChosen);
+// $wishes = ['счастья', 'здоровья', 'удачи', 'счастья', 'радости'];
+// $epithets = ['огромного', 'отличного', 'безграничного', 'крепчайщего', 'небывалого'];
 
-$congratulations = " <<Дорогой $name, поздравляю, и желаю тебе " . implode(', ', $wishesChosen) . " и " . $lastWish . ">>.";
+// $name = readline('Имя именинника?');
+// $wishesLimit = 3;
+// $wishesChosen = [];
+// for ($i = 1; $i <= $wishesLimit; $i++) {
+//     $wishesChosen[] = $epithets[array_rand($epithets)] . " " . $wishes[array_rand($wishes)];
+// }
 
-echo $congratulations;
+// $lastWish = array_pop($wishesChosen);
+
+// $congratulations = " <<Дорогой $name, поздравляю, и желаю тебе " . implode(', ', $wishesChosen) . " и " . $lastWish . ">>.";
+
+// echo $congratulations;
+
+$mas = [4, 5, 1, 4, 7, 8, 15, 6, 71, 45, 2];
+$evenOddCheck = function (int $el): string {
+    return $el & 1 ? 'нечетное' : 'четное';
+};
+$evenOdd = array_map($evenOddCheck, $mas);
+
+print_r($evenOdd);
+
+
+
+$massiv = [4, 5, 1, 4, 7, 8, 15, 6, 71, 45, 2];
+$data = function (array $num): array {
+    return [
+        'max' => max($num),
+        'min' => min($num),
+        'acg' => array_sum($num) / count($num),
+
+    ];
+};
+print_r($data($massiv));
