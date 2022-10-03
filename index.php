@@ -80,23 +80,40 @@
 
 // echo $congratulations;
 
-$mas = [4, 5, 1, 4, 7, 8, 15, 6, 71, 45, 2];
-$evenOddCheck = function (int $el): string {
-    return $el & 1 ? 'нечетное' : 'четное';
-};
-$evenOdd = array_map($evenOddCheck, $mas);
+// $mas = [4, 5, 1, 4, 7, 8, 15, 6, 71, 45, 2];
+// $evenOddCheck = function (int $el): string {
+//     return $el & 1 ? 'нечетное' : 'четное';
+// };
+// $evenOdd = array_map($evenOddCheck, $mas);
 
-print_r($evenOdd);
+// print_r($evenOdd);
 
 
 
-$massiv = [4, 5, 1, 4, 7, 8, 15, 6, 71, 45, 2];
-$data = function (array $num): array {
-    return [
-        'max' => max($num),
-        'min' => min($num),
-        'acg' => array_sum($num) / count($num),
+// $massiv = [4, 5, 1, 4, 7, 8, 15, 6, 71, 45, 2];
+// $data = function (array $num): array {
+//     return [
+//         'max' => max($num),
+//         'min' => min($num),
+//         'acg' => array_sum($num) / count($num),
 
-    ];
-};
-print_r($data($massiv));
+//     ];
+// };
+// print_r($data($massiv));
+require_once "User.php";
+require_once "Task.php";
+require_once "Comment.php";
+require_once "TaskService.php";
+
+$user = new User('Юзер1', 'mail@mail.ru');
+$task = new Task($user, 'Первая задача', 6);
+
+TaskService::addComment($user, $task, 'Побыстрее');
+TaskService::addComment($user, $task, 'Второй');
+
+echo "Коменты" . PHP_EOL;
+
+foreach ($task->getComments() as $comment) {
+    echo $comment->getText() . ", ";
+    echo "имя" . $comment->getTask()->getDescription() . PHP_EOL;
+}
