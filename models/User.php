@@ -1,15 +1,19 @@
 <?php
 
-class User
-{
-    private int $id;
-    private string $username;
-    private string $name; // Добавляем свойство для имени
+include_once "models/Model.php";
 
-    public function __construct(string $username)
+class User extends Model
+{
+
+    private ?string $username;
+    private ?string $name; // Добавляем свойство для имени
+
+    public function __construct(int $id = null, string $username = null)
     {
+        parent::__construct($id);
         $this->username = $username;
     }
+
 
 // Сделаем методы получения и установки свойств
     public function getName(): string
